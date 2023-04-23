@@ -22,8 +22,8 @@ def compute_metric(hiddenstate_dict, device):
         del matrix #compute within-class variability
     metric = torch.trace(torch.mm(Withinclass_matirx, torch.linalg.pinv(Betweenclass_matrix))) / len(hiddenstate_dict) #compute the metirc
     del Withinclass_matirx, Betweenclass_matrix
-    for vector in hiddenstate_vectors.values():
-        del vector
+    for matrix in hiddenstate_dict.values():
+        del matrix
     torch.cuda.empty_cache()
     return metric
 
